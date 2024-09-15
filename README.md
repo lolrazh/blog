@@ -1,2 +1,2 @@
 # sandheeprajkumar.github.io
-Sandheep's Blog
+Sandy's Blog
