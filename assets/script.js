@@ -16,17 +16,17 @@ document.addEventListener("DOMContentLoaded", function() {
 document.addEventListener("DOMContentLoaded", function() {
     const blogPosts = document.getElementById("blog-posts");
 
-    // Fetch the blog posts from the JSON file
-    fetch("blog/assets/posts.json")
+    // Fetch the blog posts from the JSON file, adjusted to the correct path
+    fetch("/blog/assets/posts.json")
         .then(response => response.json())
         .then(posts => {
             posts.forEach(post => {
                 // Create a new blog post card for each post
                 const card = document.createElement("article");
                 card.classList.add("card");
-                
+
                 const postLink = document.createElement("a");
-                postLink.href = post.link;  // Points to markdown file
+                postLink.href = post.link;  // Points to the markdown file
                 postLink.innerHTML = post.title;
 
                 const postTitle = document.createElement("h2");
@@ -38,7 +38,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
             // Adjust layout based on the number of posts
             adjustLayout(blogPosts.children.length);
-        });
+        })
+        .catch(error => console.error("Error fetching posts:", error));
 });
 
 function adjustLayout(postCount) {
