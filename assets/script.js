@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const blogPosts = document.getElementById("blog-posts");
 
     // Fetch the blog posts from the JSON file
-    fetch("assets/posts.json")
+    fetch("blog/assets/posts.json")
         .then(response => response.json())
         .then(posts => {
             posts.forEach(post => {
