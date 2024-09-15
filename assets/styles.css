@@ -7,36 +7,65 @@ body {
     padding: 0;
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Align items to the start */
+    align-items: flex-start;
     min-height: 100vh;
 }
 
-/* Title aligned to Top-Left with Bottom Padding */
+/* Title aligned to Top-Left with Extra Bottom Padding */
 h1 {
     position: absolute;
     top: 10px; /* Aligned to the top */
     left: 30px; /* Aligned to the left */
-    padding-bottom: 50px; /* Added padding to prevent overlap with cards */
-    font-size: 1.8em; /* Reduced font size */
+    padding-bottom: 80px; /* Extra padding to prevent overlap with the cards */
+    font-size: 1.8em; /* Adjusted font size */
     color: #fff;
 }
 
-/* Main Content */
+/* Main Content with extra margin to avoid overlap with title */
 main {
     max-width: 1200px;
     padding: 20px;
-    margin-top: 100px; /* Adjusted to account for the title's padding */
+    margin-top: 100px; /* Ensure enough space between title and cards */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 150px); /* Centers content vertically and horizontally */
 }
 
-/* Blog Post Cards */
+/* Blog Post Cards - Default Layout */
 #blog-posts {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
     gap: 20px;
     justify-content: center;
     margin-top: 30px;
+    align-items: center;
 }
 
+/* One Post - Centered */
+#blog-posts.single-post {
+    grid-template-columns: 1fr;
+    justify-items: center;
+}
+
+/* Two Posts - Centered */
+#blog-posts.two-posts {
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+}
+
+/* Three Posts - Centered and full width */
+#blog-posts.three-posts {
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+}
+
+/* Four or more posts - Normal layout */
+#blog-posts.more-posts {
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+}
+
+/* Blog Post Cards */
 .card {
     position: relative;
     background-color: transparent;
@@ -53,13 +82,6 @@ main {
     transition: background-color 0.2s ease-in-out;
     color: #fff;
     overflow: hidden;
-}
-
-/* Ensure a maximum of three cards per row */
-#blog-posts {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Limit to 3 cards per row */
-    grid-gap: 20px; /* Add space between the cards */
 }
 
 .card h2 {
@@ -143,6 +165,11 @@ a {
 
 ::-webkit-scrollbar-thumb:hover {
     background: #cccccc; /* Lighter gray on hover for better visibility */
+}
+
+/* Remove up/down arrows from scrollbar */
+::-webkit-scrollbar-button {
+    display: none; /* Hides the up and down arrow buttons */
 }
 
 /* For Firefox */
