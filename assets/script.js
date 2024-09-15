@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const blogPosts = document.getElementById("blog-posts");
 
     // Fetch the blog posts from the JSON file, adjusted to the correct path
-    fetch("/blog/assets/posts.json")
+    fetch("assets/posts.json")
         .then(response => response.json())
         .then(posts => {
             posts.forEach(post => {
