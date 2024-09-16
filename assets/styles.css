@@ -71,15 +71,33 @@ a:visited, a:hover, a:focus, a:active {
 }
 
 /* Hover effect for cards */
-.card:hover {
-    background-color: rgba(255, 255, 255, 0.1); /* Subtle hover effect */
+.card::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    z-index: 1;
+    transform: translateY(100%);
+    transition: transform 0.2s ease-in-out;
+}
+
+.card:hover::before,
+.card.hovered::before {
+    transform: translateY(0);
+}
+
+.card:hover h2,
+.card.hovered h2 {
+    color: #000; /* Invert text color */
 }
 
 .card h2 {
-    font-size: 1.2em;
-    color: inherit;
+    position: relative;
+    z-index: 2; /* Keep text above the card's hover effect */
 }
-
 /* Responsive Layout for medium screens */
 @media (max-width: 1024px) {
     h1 {
