@@ -47,8 +47,8 @@ main {
     background-color: transparent;
     border: 2px solid #fff;
     padding: 20px;
-    width: 250px; /* Fixed width to avoid stretching */
-    max-width: 250px; /* Prevents stretching */
+    width: 100%; /* Set to 100% to use max-width for responsiveness */
+    max-width: 320px; /* Max width to prevent it from stretching on mobile */
     height: 150px;
     display: flex;
     flex-direction: column;
@@ -57,9 +57,10 @@ main {
     transition: background-color 0.2s ease-in-out;
     color: #fff;
     overflow: hidden;
+    box-sizing: border-box; /* Include padding and border in the element's width and height */
 }
 
-/* Style the links and ensure consistency across devices */
+/* Style the links */
 a {
     color: inherit; /* Use the inherited color (white) */
     text-decoration: none; /* Remove the underline */
@@ -79,16 +80,22 @@ a:visited, a:hover, a:focus, a:active {
     color: inherit;
 }
 
-/* Responsive Layout for larger screens */
+/* Responsive Layout for medium screens */
 @media (max-width: 1024px) {
     h1 {
         font-size: 1.8em; /* Maintain the same font size */
     }
 }
 
+/* Mobile Layout - Fix the stretching issue */
 @media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
     #blog-posts {
-        grid-template-columns: 1fr !important; /* Keep the card in the center on smaller screens */
+        grid-template-columns: 1fr; /* One column on small screens */
+        justify-items: center; /* Center the card */
     }
 
     h1 {
@@ -96,8 +103,8 @@ a:visited, a:hover, a:focus, a:active {
     }
 
     .card {
-        width: 100%;
-        max-width: 100%;
+        width: 100%; /* Set card to take full width */
+        max-width: 320px; /* Limit the width on mobile */
         margin-bottom: 20px;
     }
 }
