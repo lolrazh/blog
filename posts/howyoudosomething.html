@@ -60,6 +60,29 @@
         .post-content em {
             font-style: italic; /* Italicize text */
         }
+
+        /* Custom Scrollbar */
+        body::-webkit-scrollbar {
+            width: 8px; /* Width of the scrollbar */
+        }
+
+        body::-webkit-scrollbar-track {
+            background: #000; /* Background color of the scrollbar track (black to blend in) */
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background-color: #fff; /* Scrollbar handle color (white) */
+        }
+
+        body::-webkit-scrollbar-thumb:hover {
+            background-color: #ccc; /* Lighter color on hover for better visibility */
+        }
+
+        /* Remove scrollbar buttons (up/down arrows) */
+        body::-webkit-scrollbar-button {
+            display: none;
+        }
+
     </style>
 </head>
 <body>
