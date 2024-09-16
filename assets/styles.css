@@ -70,7 +70,7 @@ a:visited, a:hover, a:focus, a:active {
     color: inherit; /* Ensure all link states (visited, hovered, focused, active) use the same color */
 }
 
-/* Hover effect for cards */
+/* Hover effect for desktop and mobile */
 .card::before {
     content: "";
     position: absolute;
@@ -84,20 +84,22 @@ a:visited, a:hover, a:focus, a:active {
     transition: transform 0.2s ease-in-out;
 }
 
-.card:hover::before,
-.card.hovered::before {
+.card:hover::before, /* Desktop hover */
+.card.hovered::before { /* Mobile touch */
     transform: translateY(0);
 }
 
-.card:hover h2,
-.card.hovered h2 {
+.card:hover h2, /* Desktop hover */
+.card.hovered h2 { /* Mobile touch */
     color: #000; /* Invert text color */
 }
 
 .card h2 {
     position: relative;
-    z-index: 2; /* Keep text above the card's hover effect */
+    z-index: 2; /* Keep text above the hover effect */
 }
+
+
 /* Responsive Layout for medium screens */
 @media (max-width: 1024px) {
     h1 {
