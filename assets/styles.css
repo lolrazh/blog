@@ -94,7 +94,10 @@ a:visited, a:hover, a:focus, a:active {
     color: #000; /* Invert text color */
 }
 
+/* Card title font size adjustment */
 .card h2 {
+    font-size: 1em; /* Adjust this value to make the title smaller */
+    color: inherit;
     position: relative;
     z-index: 2; /* Keep text above the hover effect */
 }
