@@ -104,7 +104,7 @@ a:visited, a:hover, a:focus, a:active {
 
     .card {
         width: 100%; /* Set card to take full width */
-        max-width: 320px; /* Limit the width on mobile */
+        max-width: 260px; /* Limit the width on mobile */
         margin-bottom: 20px;
     }
 }
