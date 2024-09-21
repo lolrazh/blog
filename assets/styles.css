@@ -35,9 +35,9 @@ main {
 /* Blog Post Cards Grid Layout */
 #blog-posts {
     display: grid;
-    grid-template-columns: 1fr; /* One column for now */
+    grid-template-columns: repeat(2, 1fr); /* Set two columns for desktop */
     gap: 20px;
-    justify-items: center; /* Center the card horizontally */
+    justify-items: center;
     margin-top: 10px;
 }
 
@@ -105,6 +105,9 @@ a:visited, a:hover, a:focus, a:active {
 
 /* Responsive Layout for medium screens */
 @media (max-width: 1024px) {
+   #blog-posts {
+        grid-template-columns: 1fr; /* Switch to a single column on medium screens */
+    }
     h1 {
         font-size: 1.8em; /* Maintain the same font size */
     }
