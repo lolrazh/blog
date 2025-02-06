@@ -7,7 +7,7 @@ body {
     padding: 0;
     display: flex;
     justify-content: center; /* Horizontally center the main content */
-    align-items: flex-start;
+    align-items: center; /* Changed to center for better vertical alignment */
     min-height: 100vh;
 }
 
@@ -16,29 +16,33 @@ h1 {
     position: absolute;
     top: 10px; /* Fixed to the top */
     left: 30px; /* Left-aligned */
-    padding-bottom: 80px; /* Prevent overlap with the cards */
+    padding-bottom: 75px; /* Prevent overlap with the cards */
     font-size: 1.8em; /* Fixed font size */
     color: #fff;
 }
 
 /* Main Content centered horizontally */
 main {
+    width: 100%;
     max-width: 1200px;
     padding: 20px;
-    margin-top: 50px; /* Adjusted for visual balance */
+    margin-top: 45px; /* Increased margin to push content down */
     display: flex;
-    justify-content: center; /* Ensures the cards stay in the center horizontally */
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    min-height: calc(100vh - 150px); /* Center vertically with some buffer */
 }
 
-/* Blog Post Cards Grid Layout */
+/* Blog Post Cards Layout */
 #blog-posts {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Set two columns for desktop */
-    gap: 20px;
-    justify-items: center;
-    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 30px; /* Increased gap between cards */
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    width: 100%;
+    max-width: 1100px; /* Added max-width to contain cards */
 }
 
 /* Blog Post Cards */
@@ -47,8 +51,7 @@ main {
     background-color: transparent;
     border: 2px solid #fff;
     padding: 20px;
-    width: 100%; /* Set to 100% to use max-width for responsiveness */
-    max-width: 320px; /* Max width to prevent it from stretching on mobile */
+    width: calc(33.33% - 20px); /* Equal width for all three cards */
     height: 150px;
     display: flex;
     flex-direction: column;
@@ -57,7 +60,10 @@ main {
     transition: background-color 0.2s ease-in-out;
     color: #fff;
     overflow: hidden;
-    box-sizing: border-box; /* Include padding and border in the element's width and height */
+    box-sizing: border-box;
+    flex: 1; /* Allow cards to grow equally */
+    min-width: 280px; /* Minimum width to prevent too narrow cards */
+    max-width: 350px; /* Maximum width to prevent too wide cards */
 }
 
 /* Style the links */
@@ -102,36 +108,61 @@ a:visited, a:hover, a:focus, a:active {
     z-index: 2; /* Keep text above the hover effect */
 }
 
-
 /* Responsive Layout for medium screens */
 @media (max-width: 1024px) {
-   #blog-posts {
-        grid-template-columns: 1fr; /* Switch to a single column on medium screens */
+    #blog-posts {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    .card {
+        width: 300px; /* Fixed width */
+        min-width: 300px; /* Maintain minimum width */
+        max-width: 300px; /* Maintain maximum width */
+        margin-bottom: 0;
     }
     h1 {
-        font-size: 1.8em; /* Maintain the same font size */
+        font-size: 1.8em;
     }
 }
 
-/* Mobile Layout - Fix the stretching issue */
+/* Mobile Layout */
 @media (max-width: 768px) {
     body {
         padding: 10px;
     }
 
+    main {
+        margin-top: 80px;
+        padding: 10px;
+    }
+
     #blog-posts {
-        grid-template-columns: 1fr; /* One column on small screens */
-        justify-items: center; /* Center the card */
+        flex-direction: column;
+        padding: 0;
+        gap: 20px;
     }
 
     h1 {
-        font-size: 1.8em; /* Keep the title size fixed */
+        font-size: 1.8em;
+        left: 20px;
     }
 
     .card {
-        width: 100%; /* Set card to take full width */
-        max-width: 260px; /* Limit the width on mobile */
-        margin-bottom: 20px;
+        width: 300px; /* Fixed width */
+        min-width: 300px; /* Maintain minimum width */
+        max-width: 300px; /* Maintain maximum width */
+        margin-bottom: 0;
+        height: 150px; /* Maintain height */
+    }
+}
+
+/* Small Mobile Layout */
+@media (max-width: 320px) {
+    .card {
+        width: 260px;
+        min-width: 260px;
+        max-width: 260px;
     }
 }
 
